@@ -49,5 +49,11 @@ func (s *Scheduler) ScheduleOnce (name string, delay time.Duration, action func(
 }
 
 func main() {
+	scheduler := NewScheduler()
+	scheduler.ScheduleOnce("TestTask", 2*time.Second, func() {
+		fmt.Println("Executing scheduled task action...")
+	})
+
+	scheduler.globalWg.Wait();
 
 }
